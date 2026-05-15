@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/repo-name/',
+  base: '/Around-the-World/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
