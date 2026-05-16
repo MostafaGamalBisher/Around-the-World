@@ -37,7 +37,6 @@ export const useFetchData = (country) => {
     if (data) {
       setResult(data);
       setFilteredCountries(data);
-      console.log('hi there');
     } else {
       FetchDataFromAPI();
     }
