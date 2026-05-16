@@ -6,7 +6,7 @@ export const useFetchData = (country) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  useEffect(() => {
+  const FetchDataFromAPI = () => {
     let url =
       'https://restcountries.com/v3.1/all?fields=name,population,region,capital,flags';
 
@@ -24,10 +24,31 @@ export const useFetchData = (country) => {
         } else {
           setResult(data);
           setFilteredCountries(data);
+          localStorage.setItem('countries', JSON.stringify(data));
         }
       })
       .catch(() => setIsError(true))
       .finally(() => setIsLoading(false));
+  };
+
+  const fetchDataFromLocalStorage = () => {
+    const data = JSON.parse(localStorage.getItem('countries'));
+
+    if (data) {
+      setResult(data);
+      setFilteredCountries(data);
+      console.log('hi there');
+    } else {
+      FetchDataFromAPI();
+    }
+  };
+
+  useEffect(() => {
+    if (country) {
+      FetchDataFromAPI();
+    } else {
+      fetchDataFromLocalStorage();
+    }
   }, []);
 
   return {

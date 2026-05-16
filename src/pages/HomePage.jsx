@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
 import ShowMessage from './../components/ShowMessage';
-import SearchInput from './../components/ShearchInput';
+import SearchInput from '../components/SearchInput';
 import RegionMenu from './../components/RegionMenu';
 import CountryList from './../components/CountryList';
 import { useFetchData } from '../useFetchData';
@@ -16,7 +15,7 @@ const HomePage = () => {
 
   return (
     <>
-      {isError && <ShowMessage message="Somehting Went Wrong" />}
+      {isError && <ShowMessage message="Something Went Wrong" />}
       {isLoading && <ShowMessage message="Loading Countries Data..." />}
       {!isError && !isLoading && (
         <>
